@@ -82,7 +82,7 @@ public class ClothingServlet extends HttpServlet {
         String status = request.getParameter("status");
         List<Clothing> clothing = this.clothingService.findAllByStatus(status);
         request.setAttribute("clothing", clothing);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listHomed/list_clothing_category.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listHome/list_clothing_category.jsp");
         requestDispatcher.forward(request, response);
 
     }

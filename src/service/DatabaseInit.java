@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseInit {
     private static final String jdbcURL = "jdbc:mysql://localhost:3306/clothing_manager";
     private static final String jdbcUser = "root";
-    private static final String jdbcPass = "loi123456";
+    private static final String jdbcPass = "password";
 
     protected static Connection getConnection() {
         Connection connection = null;
