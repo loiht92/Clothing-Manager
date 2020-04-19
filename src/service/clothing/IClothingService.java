@@ -24,4 +24,7 @@ public interface IClothingService {
 
 
     List<Clothing> findAllByStatus(String status);
+    
+    List<String> findAllCategoryStatus();
+    
 }

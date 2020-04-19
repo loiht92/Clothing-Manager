@@ -221,4 +221,25 @@ public class ClothingServiceImpl extends DatabaseInit implements IClothingServic
         }
         return clothingCategory;
     }
+    
+    @Override
+    public List<String> findAllCategoryStatus() {
+        List<String> statuses = new ArrayList<>();
+        String selectStatus = "SELECT DISTINCT c.status FROM clothing_manager.category c";
+        
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(selectStatus)
+        ) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String status = resultSet.getString("status");
+                
+                statuses.add(status);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return statuses;
+    }
 }

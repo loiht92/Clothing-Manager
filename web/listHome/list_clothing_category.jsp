@@ -17,15 +17,17 @@
     <a href="${pageContext.request.contextPath}/clothing?action=listClothing">Clothing-Manager</a>
     <a href="${pageContext.request.contextPath}/category?action=listCategory">Category-Manager</a>
 </p>
-    <form action="${pageContext.request.contextPath}/clothing" method="get">
-        <input type="hidden" name="action" value="findByStatus"/>
-            <select name="status">
-                <c:forEach items='${requestScope["clothing"]}' var="clothing">
-                    <option name="status">${clothing.getStatus()}</option>
-                </c:forEach>
-            </select>
-        <button type="submit">Tìm kiếm theo tinh trang hang ban</button>
-    </form>
+
+<form action="${pageContext.request.contextPath}/clothing" method="get">
+    <input type="hidden" name="action" value="findByStatus"/>
+    <select name="status">
+        <c:forEach items='${requestScope["statuses"]}' var="status">
+            <option name="status">${status}</option>
+        </c:forEach>
+    </select>
+    <button type="submit">Tìm kiếm theo tinh trang hang ban</button>
+</form>
+
 <table border="1">
     <tr>
         <td>Name</td>

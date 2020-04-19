@@ -82,6 +82,9 @@ public class ClothingServlet extends HttpServlet {
         String status = request.getParameter("status");
         List<Clothing> clothing = this.clothingService.findAllByStatus(status);
         request.setAttribute("clothing", clothing);
+        
+        List<String> statuses = this.clothingService.findAllCategoryStatus();
+        request.setAttribute("statuses", statuses);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("listHome/list_clothing_category.jsp");
         requestDispatcher.forward(request, response);
 
@@ -102,9 +105,10 @@ public class ClothingServlet extends HttpServlet {
 
         List<Clothing> clothing = this.clothingService.findAllClothingCategory();
         request.setAttribute("clothing", clothing);
-//        List<Category> categories = this.categoryService.findAll();
-//        request.setAttribute("categories",categories);
-
+    
+        List<String> statuses = this.clothingService.findAllCategoryStatus();
+        request.setAttribute("statuses", statuses);
+        
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("listHome/list_clothing_category.jsp");
         requestDispatcher.forward(request, response);
     }

@@ -64,6 +64,8 @@ public class CategoryServlet extends HttpServlet {
                 case "findByCategoryName":
                     findByCategoryName(request, response);
                     break;
+                case "findAllStatus":
+                    this.findAllCategoryStatus(request, response);
                 default:
                     listClothingCategory(request, response);
                     break;
@@ -72,8 +74,16 @@ public class CategoryServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-
+    
+    private void findAllCategoryStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<String> statuses = this.clothingService.findAllCategoryStatus();
+        request.setAttribute("statuses", statuses);
+    
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("listHome/list_clothing_category.jsp");
+        requestDispatcher.forward(request, response);
+    }
+    
+    
     private void listClothingCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Clothing> clothing = this.clothingService.findAllClothingCategory();
         request.setAttribute("clothing", clothing);
